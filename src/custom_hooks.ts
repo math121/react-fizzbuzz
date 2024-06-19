@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 
-export function useCustomMessage(number: number, text: string): string | null {
+export function useCustomMessage(number: number, text: string) {
   const [message, setMessage] = useState<string | null>(null);
+  const [t, setT] = useState<string[]>([]);
 
   useEffect(() => {
-    if (number % 3 == 0 && text != "Fizz") {
-      setMessage(`You lose! Number ${number} is Fizz`);
-    } else if (number % 5 == 0 && text != "Buzz") {
-      setMessage(`You lose! Number ${number} is Buzz`);
+    if ((number % 3) + (number % 5) == 0 && text == "") {
+      setMessage(`Number ${number} is FizzBuzz`);
+      setT([...t, `${number} = FizzBuzz`]);
+    } else if (number % 3 == 0 && text == "") {
+      setMessage(`Number ${number} is Fizz`);
+      setT([...t, `${number} = Fizz`]);
+    } else if (number % 5 == 0 && text == "") {
+      setMessage(`Number ${number} is Buzz`);
+      setT([...t, `${number} = Buzz`]);
     }
 
     console.log("NUmber: " + number + " " + text);
@@ -19,5 +25,5 @@ export function useCustomMessage(number: number, text: string): string | null {
 
   //console.log("NUmber: " + number + " " + text);
 
-  return message;
+  return { message: message, missedNumbers: t };
 }

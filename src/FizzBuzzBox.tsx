@@ -5,7 +5,7 @@ import { useCustomMessage } from "./custom_hooks";
 function FizzBuzzBox() {
   const [number, setNumber] = useState(1);
   const [text, setText] = useState("");
-  const message: string | null = useCustomMessage(number, text);
+  const message = useCustomMessage(number, text);
 
   const fizzCheck = (): void => {
     setText("Fizz");
@@ -14,6 +14,11 @@ function FizzBuzzBox() {
 
   const buzzCheck = (): void => {
     setText("Buzz");
+    setNumber(number + 1);
+  };
+
+  const fizzBuzzCheck = (): void => {
+    setText("FizzBuzz");
     setNumber(number + 1);
   };
 
@@ -40,6 +45,9 @@ function FizzBuzzBox() {
           <Button variant="outlined" onClick={buzzCheck}>
             Buzz
           </Button>
+          <Button variant="outlined" onClick={fizzBuzzCheck}>
+            FizzBuzz
+          </Button>
         </Box>
 
         <TextField disabled value={text != "" ? text : number}></TextField>
@@ -48,9 +56,14 @@ function FizzBuzzBox() {
           Reset
         </Button>
       </div>
-      {message && <h2>{message}</h2>}
+      {message.message && <h2>{message.message}</h2>}
 
-      <Button>This is custom hooks</Button>
+      <h3>Missed Fizz/Buzz Numbers</h3>
+      <div className="grid-missed-numbers">
+        {message.missedNumbers.map((value, index) => (
+          <p key={index}>{value}</p>
+        ))}
+      </div>
     </>
   );
 }

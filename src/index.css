@@ -1,3 +1,7 @@
+body {
+  display: flex;
+  justify-content: center;
+}
 .button-box {
   width: min-content;
   display: flex;
@@ -9,4 +13,9 @@
   display: flex;
   gap: 50px;
   align-items: center;
+}
+
+.grid-missed-numbers {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }

@@ -1,1 +1,12 @@
+.button-box {
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
+.container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}

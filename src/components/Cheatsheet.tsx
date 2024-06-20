@@ -30,21 +30,24 @@ export const Cheatsheet = () => {
       <h1>Cheatsheet</h1>
 
       <form onSubmit={(e) => submit(e)}>
-        <label>Generate number up to: </label>
+        <label className="data-list">Generate number up to: </label>
         <input type="text" />
       </form>
 
       {!isLoading &&
         data.length != 0 &&
         data.map((value: number | string, index: number) => (
-          <p key={index}>{`Number: ${index + 1} | Value: ${value}`}</p>
+          <p
+            className="data-list"
+            key={index}
+          >{`Number: ${index + 1} | Value: ${value}`}</p>
         ))}
 
       {!isLoading && data.length == 0 && (
-        <p>Please give a number greater than 0</p>
+        <p className="data-list">Please give a number greater than 0</p>
       )}
 
-      {isLoading && <p>Page is loading....</p>}
+      {isLoading && <p className="data-list">Page is loading....</p>}
     </>
   );
 };

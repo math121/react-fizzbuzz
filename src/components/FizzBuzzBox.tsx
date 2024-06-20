@@ -37,6 +37,7 @@ function FizzBuzzBox() {
       <div className="container">
         <Box className="button-box">
           <Button
+            style={{ fontSize: 17 }}
             disabled={message != null}
             variant="outlined"
             onClick={incrementNumber}
@@ -44,6 +45,7 @@ function FizzBuzzBox() {
             Increase number
           </Button>
           <Button
+            style={{ fontSize: 17 }}
             disabled={message != null}
             variant="outlined"
             onClick={fizzCheck}
@@ -51,6 +53,7 @@ function FizzBuzzBox() {
             Fizz
           </Button>
           <Button
+            style={{ fontSize: 17 }}
             disabled={message != null}
             variant="outlined"
             onClick={buzzCheck}
@@ -58,6 +61,7 @@ function FizzBuzzBox() {
             Buzz
           </Button>
           <Button
+            style={{ fontSize: 17 }}
             disabled={message != null}
             variant="outlined"
             onClick={fizzBuzzCheck}
@@ -67,8 +71,7 @@ function FizzBuzzBox() {
         </Box>
 
         <TextField disabled value={text != "" ? text : number}></TextField>
-
-        <Button variant="contained" onClick={reset}>
+        <Button style={{ fontSize: 17 }} variant="contained" onClick={reset}>
           Reset
         </Button>
       </div>

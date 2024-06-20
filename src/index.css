@@ -27,7 +27,7 @@ body {
 }
 
 .links {
-  font-size: 20px;
+  font-size: 25px;
   text-decoration: none;
   padding: 20px;
 }
@@ -35,4 +35,8 @@ body {
 .links:hover {
   background-color: rgb(104, 104, 255);
   color: white;
+}
+
+.data-list {
+  font-size: 20px;
 }

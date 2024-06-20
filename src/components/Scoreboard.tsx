@@ -9,6 +9,10 @@ type saveScore = {
 export const Scoreboard = () => {
   const [scores, setScores] = useState<saveScore[]>([]);
 
+  const sortScores = (array: saveScore[]) => {
+    return array.sort((a, b) => (a.score < b.score ? 1 : -1));
+  };
+
   useEffect(() => {
     let scoresList = [];
 
@@ -17,7 +21,8 @@ export const Scoreboard = () => {
       scoresList = JSON.parse(scores);
     }
 
-    setScores(scoresList);
+    const sortedList = sortScores(scoresList);
+    setScores(sortedList);
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from "@mui/material";
 import { useState } from "react";
-import { useCustomMessage } from "./custom_hooks";
+import { useCustomMessage } from "../custom_hooks";
 
 function FizzBuzzBox() {
   const [number, setNumber] = useState(1);

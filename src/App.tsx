@@ -1,11 +1,19 @@
-import { FizzBuzzBox } from "./FizzBuzzBox";
 import "./index.css";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { routeTree } from "./components/Route";
+
+const router = createRouter({ routeTree });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
 
 function App() {
   return (
     <>
-      <h1>Fizz or Buzz</h1>
-      <FizzBuzzBox />
+      <RouterProvider router={router} />
     </>
   );
 }

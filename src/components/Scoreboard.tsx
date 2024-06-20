@@ -10,9 +10,14 @@ export const Scoreboard = () => {
   const [scores, setScores] = useState<saveScore[]>([]);
 
   useEffect(() => {
-    const test = JSON.parse(localStorage.getItem("scores")) || [];
-    console.log(test);
-    setScores(test);
+    let scoresList = [];
+
+    const scores: string | null = localStorage.getItem("scores");
+    if (scores) {
+      scoresList = JSON.parse(scores);
+    }
+
+    setScores(scoresList);
   }, []);
 
   return (

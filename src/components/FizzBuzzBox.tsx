@@ -4,7 +4,7 @@ import { useCustomMessage } from "../custom_hooks";
 
 function FizzBuzzBox() {
   const [number, setNumber] = useState(1);
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string | number>(1);
   const message = useCustomMessage(number, text);
 
   const fizzCheck = (): void => {
@@ -23,7 +23,7 @@ function FizzBuzzBox() {
   };
 
   const incrementNumber = (): void => {
-    setText("");
+    setText(number + 1);
     setNumber(number + 1);
   };
 
@@ -37,28 +37,28 @@ function FizzBuzzBox() {
       <div className="container">
         <Box className="button-box">
           <Button
-            disabled={message.message != null}
+            disabled={message != null}
             variant="outlined"
             onClick={incrementNumber}
           >
             Increase number
           </Button>
           <Button
-            disabled={message.message != null}
+            disabled={message != null}
             variant="outlined"
             onClick={fizzCheck}
           >
             Fizz
           </Button>
           <Button
-            disabled={message.message != null}
+            disabled={message != null}
             variant="outlined"
             onClick={buzzCheck}
           >
             Buzz
           </Button>
           <Button
-            disabled={message.message != null}
+            disabled={message != null}
             variant="outlined"
             onClick={fizzBuzzCheck}
           >
@@ -72,14 +72,7 @@ function FizzBuzzBox() {
           Reset
         </Button>
       </div>
-      {message.message && <h2>{message.message}</h2>}
-
-      <h3>Missed Fizz/Buzz Numbers</h3>
-      <div className="grid-missed-numbers">
-        {message.missedNumbers.map((value, index) => (
-          <p key={index}>{value}</p>
-        ))}
-      </div>
+      {message && <h2>{message}</h2>}
     </>
   );
 }

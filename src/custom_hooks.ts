@@ -6,31 +6,33 @@ type saveScore = {
   time: string;
 };
 
-export function useCustomMessage(number: number, text: string) {
+export function useCustomMessage(number: number, text: string | number) {
   const [message, setMessage] = useState<string | null>(null);
-  const [t, setT] = useState<string[]>([]);
 
-  const score: saveScore = {
-    score: number,
-    name: "",
-    time: new Date().toLocaleString(),
+  const checkFizzBuzz = (number: number): string | number => {
+    if ((number % 3) + (number % 5) == 0) return "FizzBuzz";
+    if (number % 3 == 0) return "Fizz";
+    if (number % 5 == 0) return "Buzz";
+    return number;
   };
-  let storage = [];
-
-  storage = JSON.parse(localStorage.getItem("scores")) || [];
 
   useEffect(() => {
-    if ((number % 3) + (number % 5) == 0 && text == "") {
-      setMessage(`Number ${number} is FizzBuzz`);
-      setT([...t, `${number} = FizzBuzz`]);
-      storage.push(score);
-    } else if (number % 3 == 0 && text == "") {
-      setMessage(`Number ${number} is Fizz`);
-      setT([...t, `${number} = Fizz`]);
-      storage.push(score);
-    } else if (number % 5 == 0 && text == "") {
-      setMessage(`Number ${number} is Buzz`);
-      setT([...t, `${number} = Buzz`]);
+    const score: saveScore = {
+      score: number,
+      name: "",
+      time: new Date().toLocaleString(),
+    };
+    let storage = [];
+
+    const scores: string | null = localStorage.getItem("scores");
+    if (scores) {
+      storage = JSON.parse(scores);
+    }
+
+    const answer = checkFizzBuzz(number);
+
+    if (answer != text) {
+      setMessage(`Number ${number} is ${answer}`);
       storage.push(score);
     }
 
@@ -43,7 +45,5 @@ export function useCustomMessage(number: number, text: string) {
     };
   }, [number, text]);
 
-  //console.log("NUmber: " + number + " " + text);
-
-  return { message: message, missedNumbers: t };
+  return message;
 }

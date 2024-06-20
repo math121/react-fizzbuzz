@@ -36,16 +36,32 @@ function FizzBuzzBox() {
     <>
       <div className="container">
         <Box className="button-box">
-          <Button variant="outlined" onClick={incrementNumber}>
+          <Button
+            disabled={message.message != null}
+            variant="outlined"
+            onClick={incrementNumber}
+          >
             Increase number
           </Button>
-          <Button variant="outlined" onClick={fizzCheck}>
+          <Button
+            disabled={message.message != null}
+            variant="outlined"
+            onClick={fizzCheck}
+          >
             Fizz
           </Button>
-          <Button variant="outlined" onClick={buzzCheck}>
+          <Button
+            disabled={message.message != null}
+            variant="outlined"
+            onClick={buzzCheck}
+          >
             Buzz
           </Button>
-          <Button variant="outlined" onClick={fizzBuzzCheck}>
+          <Button
+            disabled={message.message != null}
+            variant="outlined"
+            onClick={fizzBuzzCheck}
+          >
             FizzBuzz
           </Button>
         </Box>

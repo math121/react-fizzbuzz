@@ -30,9 +30,7 @@ export const Scoreboard = () => {
       <h1>Scoreboard</h1>
       {scores &&
         scores.map((value, index) => (
-          <p
-            key={index}
-          >{`Time: ${value.time} | Highest number reached: ${value.score}`}</p>
+          <p key={index}>{`Time: ${value.time} | Score: ${value.score}`}</p>
         ))}
 
       {scores.length == 0 && <p>No scores to show</p>}

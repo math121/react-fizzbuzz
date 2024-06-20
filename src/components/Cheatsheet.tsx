@@ -30,6 +30,7 @@ export const Cheatsheet = () => {
       <h1>Cheatsheet</h1>
 
       <form onSubmit={(e) => submit(e)}>
+        <label>Generate number up to: </label>
         <input type="text" />
       </form>
 

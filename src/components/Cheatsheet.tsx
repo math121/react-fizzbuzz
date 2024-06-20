@@ -1,5 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { FormEvent, useState } from "react";
+import {
+  TableCell,
+  TableRow,
+  Table,
+  TableBody,
+  TableHead,
+} from "@mui/material";
 
 export const Cheatsheet = () => {
   const [numberLoad, setNumberLoad] = useState(15);
@@ -34,14 +41,24 @@ export const Cheatsheet = () => {
         <input type="text" />
       </form>
 
-      {!isLoading &&
-        data.length != 0 &&
-        data.map((value: number | string, index: number) => (
-          <p
-            className="data-list"
-            key={index}
-          >{`Number: ${index + 1} | Value: ${value}`}</p>
-        ))}
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{ fontSize: 17 }}>Number</TableCell>
+            <TableCell sx={{ fontSize: 17 }}>Value</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {!isLoading &&
+            data.length != 0 &&
+            data.map((value: number | string, index: number) => (
+              <TableRow key={index}>
+                <TableCell sx={{ fontSize: 17 }}>{index + 1}</TableCell>
+                <TableCell sx={{ fontSize: 17 }}>{value}</TableCell>
+              </TableRow>
+            ))}
+        </TableBody>
+      </Table>
 
       {!isLoading && data.length == 0 && (
         <p className="data-list">Please give a number greater than 0</p>

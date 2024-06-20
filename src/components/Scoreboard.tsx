@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import {
+  TableCell,
+  TableRow,
+  Table,
+  TableBody,
+  TableHead,
+} from "@mui/material";
 
 type saveScore = {
   score: number;
@@ -28,13 +35,23 @@ export const Scoreboard = () => {
   return (
     <>
       <h1>Scoreboard</h1>
-      {scores &&
-        scores.map((value, index) => (
-          <p
-            className="data-list"
-            key={index}
-          >{`Time: ${value.time} | Score: ${value.score}`}</p>
-        ))}
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell sx={{ fontSize: 17 }}>Time</TableCell>
+            <TableCell sx={{ fontSize: 17 }}>Score</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {scores &&
+            scores.map((value, index) => (
+              <TableRow className="data-list" key={index}>
+                <TableCell sx={{ fontSize: 17 }}>{value.time}</TableCell>
+                <TableCell sx={{ fontSize: 17 }}>{value.score}</TableCell>
+              </TableRow>
+            ))}
+        </TableBody>
+      </Table>
 
       {scores.length == 0 && <p className="data-list">No scores to show</p>}
     </>

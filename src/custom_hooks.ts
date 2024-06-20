@@ -32,7 +32,7 @@ export function useCustomMessage(number: number, text: string | number) {
     const answer = checkFizzBuzz(number);
 
     if (answer != text) {
-      setMessage(`Number ${number} is ${answer}`);
+      setMessage(`Number ${number} is ${answer}!`);
       storage.push(score);
     }
 

@@ -29,7 +29,7 @@ function FizzBuzzBox() {
 
   const reset = (): void => {
     setNumber(1);
-    setText("");
+    setText(1);
   };
 
   return (
@@ -68,7 +68,7 @@ function FizzBuzzBox() {
 
         <TextField disabled value={text != "" ? text : number}></TextField>
 
-        <Button variant="outlined" onClick={reset}>
+        <Button variant="contained" onClick={reset}>
           Reset
         </Button>
       </div>

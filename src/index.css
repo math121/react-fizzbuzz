@@ -13,9 +13,26 @@ body {
   display: flex;
   gap: 50px;
   align-items: center;
+  padding: 20px;
 }
 
 .grid-missed-numbers {
   display: grid;
   grid-template-columns: auto auto auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.links {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.links:hover {
+  background-color: rgb(104, 104, 255);
+  color: white;
 }

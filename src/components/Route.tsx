@@ -11,10 +11,16 @@ import { Scoreboard } from "./Scoreboard";
 const rootRoute = createRootRoute({
   component: () => (
     <>
-      <div>
-        <Link to="/"> FizzBuzz </Link>
-        <Link to="/cheatsheet"> CheatSheet </Link>
-        <Link to="/scoreboard"> Scoreboard </Link>
+      <div className="navbar">
+        <Link className="links" to="/">
+          FizzBuzz
+        </Link>
+        <Link className="links" to="/cheatsheet">
+          CheatSheet
+        </Link>
+        <Link className="links" to="/scoreboard">
+          Scoreboard
+        </Link>
       </div>
       <Outlet />
     </>

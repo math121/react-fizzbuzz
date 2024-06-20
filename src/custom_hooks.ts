@@ -18,7 +18,7 @@ export function useCustomMessage(number: number, text: string | number) {
 
   useEffect(() => {
     const score: saveScore = {
-      score: number,
+      score: number - 1,
       name: "",
       time: new Date().toLocaleString(),
     };

@@ -1,10 +1,20 @@
 import { useEffect, useState } from "react";
 
-type saveScore = {
+type score = {
   score: number;
-  name: string;
+  userName: string;
   time: string;
 };
+
+function postScore(data: score) {
+  return fetch(`http://localhost:8080/api/scoreboard`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((response) => console.log(response));
+}
 
 export function useCustomMessage(number: number, text: string | number) {
   const [message, setMessage] = useState<string | null>(null);
@@ -17,26 +27,18 @@ export function useCustomMessage(number: number, text: string | number) {
   };
 
   useEffect(() => {
-    const score: saveScore = {
-      score: number - 1,
-      name: "",
-      time: new Date().toLocaleString(),
-    };
-    let storage = [];
-
-    const scores: string | null = localStorage.getItem("scores");
-    if (scores) {
-      storage = JSON.parse(scores);
-    }
-
     const answer = checkFizzBuzz(number);
+
+    const data = {
+      userName: "Guest",
+      time: new Date().toISOString().slice(0, 19),
+      score: number - 1,
+    };
 
     if (answer != text) {
       setMessage(`Number ${number} is ${answer}!`);
-      storage.push(score);
+      postScore(data);
     }
-
-    localStorage.setItem("scores", JSON.stringify(storage));
 
     console.log("NUmber: " + number + " " + text);
 

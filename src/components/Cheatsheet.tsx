@@ -9,10 +9,10 @@ import {
 } from "@mui/material";
 
 export const Cheatsheet = () => {
-  const [numberLoad, setNumberLoad] = useState(15);
+  const [numberLoad, setNumberLoad] = useState(5);
 
   function fetchCheatsheet() {
-    return fetch(`https://fizzbuzz.ketzu.net/to/${numberLoad}`)
+    return fetch(`http://localhost:8080/api/fizzbuzz/${numberLoad}`)
       .then((response) => response.json())
       .then((data) => data);
   }
@@ -51,10 +51,10 @@ export const Cheatsheet = () => {
         <TableBody>
           {!isLoading &&
             data.length != 0 &&
-            data.map((value: number | string, index: number) => (
-              <TableRow key={index}>
-                <TableCell sx={{ fontSize: 17 }}>{index + 1}</TableCell>
-                <TableCell sx={{ fontSize: 17 }}>{value}</TableCell>
+            data.map((value: { number: number; value: string }) => (
+              <TableRow key={value.number}>
+                <TableCell sx={{ fontSize: 17 }}>{value.number}</TableCell>
+                <TableCell sx={{ fontSize: 17 }}>{value.value}</TableCell>
               </TableRow>
             ))}
         </TableBody>

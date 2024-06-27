@@ -4,8 +4,9 @@ import { useCustomMessage } from "../custom_hooks";
 
 function FizzBuzzBox() {
   const [number, setNumber] = useState(1);
+  const [name, setName] = useState("");
   const [text, setText] = useState<string | number>(1);
-  const message = useCustomMessage(number, text);
+  const message = useCustomMessage(number, text, name);
 
   const fizzCheck = (): void => {
     setText("Fizz");
@@ -32,8 +33,18 @@ function FizzBuzzBox() {
     setText(1);
   };
 
+  const submitName = (e): void => {
+    e.preventDefault();
+    setName(e.target[0].value);
+  };
+
   return (
     <>
+      <form onSubmit={submitName}>
+        <label>Enter Name:</label>
+        <input type="text" />
+        <p>{name}</p>
+      </form>
       <div className="container">
         <Box className="button-box">
           <Button

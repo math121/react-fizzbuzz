@@ -16,7 +16,11 @@ function postScore(data: score) {
   }).then((response) => console.log(response));
 }
 
-export function useCustomMessage(number: number, text: string | number) {
+export function useCustomMessage(
+  number: number,
+  text: string | number,
+  name: string
+) {
   const [message, setMessage] = useState<string | null>(null);
 
   const checkFizzBuzz = (number: number): string | number => {
@@ -30,7 +34,7 @@ export function useCustomMessage(number: number, text: string | number) {
     const answer = checkFizzBuzz(number);
 
     const data = {
-      userName: "Guest",
+      userName: name,
       time: new Date().toISOString().slice(0, 19),
       score: number - 1,
     };

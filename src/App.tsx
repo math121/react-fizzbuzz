@@ -2,6 +2,12 @@ import "./index.css";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./components/Route";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+} from "@clerk/clerk-react";
 
 const router = createRouter({ routeTree });
 
@@ -16,9 +22,15 @@ function App() {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+        <SignOutButton />
+      </SignedIn>
     </>
   );
 }

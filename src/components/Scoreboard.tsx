@@ -7,10 +7,16 @@ import {
   TableHead,
 } from "@mui/material";
 
+type user = {
+  country: string;
+  userId: number;
+  userName: string;
+};
+
 type scoreboard = {
   id: number;
   score: number;
-  user_name: string;
+  fizzBuzzUser: user;
   time: string;
 };
 
@@ -46,7 +52,9 @@ export const Scoreboard = () => {
             data.map((value: scoreboard) => (
               <TableRow className="data-list" key={value.id}>
                 <TableCell sx={{ fontSize: 17 }}>{value.time}</TableCell>
-                <TableCell sx={{ fontSize: 17 }}>{value.user_name}</TableCell>
+                <TableCell sx={{ fontSize: 17 }}>
+                  {value.fizzBuzzUser.userName}
+                </TableCell>
                 <TableCell sx={{ fontSize: 17 }}>{value.score}</TableCell>
               </TableRow>
             ))}
